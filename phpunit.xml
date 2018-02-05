@@ -8,7 +8,11 @@
 	>
 	<testsuites>
 		<testsuite>
-			<directory prefix="test-" suffix=".php">./tests/phpunit/</directory>
+			<directory suffix="Test.php">./tests/phpunit/</directory>
 		</testsuite>
 	</testsuites>
+
+	<php>
+		<env name="PORT" value="5000" />
+	</php>
 </phpunit>
