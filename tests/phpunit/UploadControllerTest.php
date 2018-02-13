@@ -4,10 +4,7 @@ use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Process\Process;
 
-/**
- * Class HomeControllerTest
- */
-class HomeControllerTest extends TestCase
+class UploadControllerTest extends TestCase
 {
     private static $process;
     private $client;
@@ -22,21 +19,33 @@ class HomeControllerTest extends TestCase
 
     public function setUp()
     {
-        $this->uri    = 'http://localhost:' . getenv('PORT');
+        $this->uri    = 'http://localhost:' . getenv('PORT') . '/';
         $this->client = new Client(['http_errors' => false]);
     }
 
-    public function testIndex()
+    public function testUpload()
     {
-        $response = $this->client->request('GET', $this->uri);
-        $body     = (string) $response->getBody();
-
+        $response = $this->client->request('POST', $this->uri, ['multipart' => [
+            [
+                'name'     => 'file',
+                'contents' => '',
+                'filename' => 'test.csv',
+            ],
+            [
+                'name'     => 'fileName',
+                'contents' => 'test.csv',
+            ],
+            [
+                'name'     => 'format',
+                'contents' => 'JSON',
+            ],
+        ]]);
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('<h1>HoETL Tool</h1>', $body);
     }
 
     public static function tearDownAfterClass()
     {
         self::$process->stop();
     }
+
 }

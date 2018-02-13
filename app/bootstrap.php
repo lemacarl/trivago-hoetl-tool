@@ -6,6 +6,10 @@
 use DI\ContainerBuilder;
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/load.php';
+
+// Comment this out to disable debug
+$setUpDebug();
 
 $containerBuilder = new ContainerBuilder;
 $containerBuilder->addDefinitions(__DIR__ . '/config.php');

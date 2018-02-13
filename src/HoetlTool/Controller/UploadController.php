@@ -4,8 +4,12 @@ namespace HoetlTool\Controller;
 
 class UploadController
 {
-    public function upload
+    // @TODO Do validation
+    public function upload()
     {
+        global $container;
+        $uploadHandler = $container->get('HoetlTool\Handler\UploadHandler');
+        $uploadHandler->handle();
     }
 
 }

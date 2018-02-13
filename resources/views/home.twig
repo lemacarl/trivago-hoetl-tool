@@ -3,7 +3,7 @@
 {% block content %}
 	<h1>HoETL Tool</h1>
 
-	<form action="/upload" method="post">
+	<form action="/" method="post" enctype="multipart/form-data">
 		<div class="row">
 			<div class="file-field input-field col s6">
 			  <div class="btn">
@@ -17,8 +17,8 @@
 			<div class="input-field col s6">
 				<select name="format" class="browser-default">
 				  <option value="" disabled selected>Select format</option>
-				  <option value="1">JSON</option>
-				  <option value="2">XML</option>
+				  <option value="JSON">JSON</option>
+				  <option value="XML">XML</option>
 				</select>
 			</div>
 		</div>
